@@ -1,4 +1,8 @@
 class TicketsController < ApplicationController
+  
+  def new
+  end
+  
   def create
     @project = Project.find(params[:project_id])
     @ticket = @project.tickets.create(ticket_params)
