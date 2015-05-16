@@ -4,12 +4,9 @@
 %p
   %strong Description:
   = @project.description
-  
-%h2 Tickets
-= render @project.tickets
-  
-%h2 Add a ticket:
-= render 'tickets/form'
-  
+
+%br/
+= link_to 'Tickets', project_tickets_path(@project, @ticket)
+
 %br/
 = link_to 'Back', projects_path

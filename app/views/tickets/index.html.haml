@@ -1,0 +1,19 @@
+%h2 Tickets
+%table
+  %tr
+    %th Title
+    %th Description
+    %th Priority:
+    %th Difficulty:
+    %th Status:
+    %th{:colspan => "5"}
+  - @ticket.each do |ticket|
+    %tr
+      %td= ticket.title
+      %td= ticket.description
+      %td= link_to 'Destroy', [ticket.project, ticket], |
+          method: :delete,                           |
+          data: { confirm: 'Are you sure?' }
+  
+%h2 Add a ticket:
+= render 'form'
