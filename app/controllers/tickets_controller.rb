@@ -14,14 +14,26 @@ class TicketsController < ApplicationController
     @ticket = @project.tickets.new
   end
   
+  def edit
+    @project = Project.find(params[:project_id])
+    @ticket = @project.tickets.find(params[:id])
+  end
+  
   def create
     @project = Project.find(params[:project_id])
     @ticket = @project.tickets.create(ticket_params)
     redirect_to project_tickets_path(@project, @ticket)
   end
   
+  def update
+    @project = Project.find(params[:project_id])
+    @ticket = @project.tickets.find(params[:id])
+    @ticket.update
+    redirect_to project_tickets_path(@project, @ticket)
+  end
+  
   def destroy
-    @project = Project.find(params[:article_id])
+    @project = Project.find(params[:project_id])
     @ticket = @project.tickets.find(params[:id])
     @ticket.destroy
     redirect_to project_tickets_path(@project, @ticket)
