@@ -1,22 +1,30 @@
 %h2 Tickets
 
-= link_to 'Add a ticket', new_project_ticket_path
+= link_to 'Add a ticket', new_project_ticket_path |
+= link_to 'Back', project_path(@project)
 
 %br/
 %br/
+
 %table
   %tr
-    %th Ticket's list:
-    %th{:colspan => "5"}
-  - @ticket.each do |ticket|
+    %th
+    %th{:colspan => "3"}
+  - tickets = @project.tickets.all
+  - @project.tickets.each do |ticket|
     %tr
-      %td= ticket.title
-      %td= link_to 'Show', [ticket.project, ticket]
-      %td= link_to 'Edit', edit_project_ticket_path(@project, ticket)
-      %td= link_to 'Destroy', [ticket.project, ticket], |
+      %td
+        %p{:style => "margin:10px"}= link_to ticket.title,  [ticket.project, ticket]
+      %td
+        %p{:style => "margin:10px"}= link_to 'Edit', edit_project_ticket_path(@project, ticket)
+      %td
+        %p{:style => "margin:10px"}= link_to ' Destroy ', [ticket.project, ticket], |
           method: :delete,                           |
-          data: { confirm: 'Are you sure?' }
-
+          data: { confirm: 'Are you sure?' }         |
+  - if tickets.size == 0
+    %em No Ticket Found
+    %br/
+    %br/
+    
 %br/
 %br/
-= link_to 'Back', project_path(@project)
