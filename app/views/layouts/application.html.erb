@@ -7,20 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render 'layouts/header' %>
   <div id="flash">
     <%=flash[:notice] if flash[:notice]%>
     <%=flash[:alert] if flash[:alert]%>
   </div>
- 
-  <%if user_signed_in? %>
-    Hello,<br>
-    <%= current_user.full_name %>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
   
 <%= yield %>
+<%= render 'layouts/footer' %>
 <script type="text/javascript" id="cookiebanner"
     src="http://cookiebanner.eu/js/cookiebanner.min.js"></script>
 </body>

@@ -1,13 +1,12 @@
 %h2 Tickets
 
-%h3 Add a ticket:
-= link_to 'New ticket', new_project_ticket_path
+= link_to 'Add a ticket', new_project_ticket_path
 
 %br/
 %br/
 %table
   %tr
-    %th Ticket's title:
+    %th Ticket's list:
     %th{:colspan => "5"}
   - @ticket.each do |ticket|
     %tr
