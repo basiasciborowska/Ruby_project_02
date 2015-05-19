@@ -10,8 +10,18 @@
     %div
       Currently waiting confirmation for: #{resource.unconfirmed_email}
   .field
+    = f.label :first_name
+    %i ("leave blank if you don't want to change it")
+    %br/
+    = f.text_field :first_name, autocomplete: "off", autofocus: true
+  .field
+    = f.label :last_name
+    %i ("leave blank if you don't want to change it")
+    %br/
+    = f.text_field :last_name, autocomplete: "off", autofocus: true
+  .field
     = f.label :password
-    %i (leave blank if you don't want to change it)
+    %i ("leave blank if you don't want to change it")
     %br/
     = f.password_field :password, autocomplete: "off"
   .field

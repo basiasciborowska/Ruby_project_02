@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :email, :password, presence: true
+  validates :email, presence: true
+  validates :password, presence: true, if: Proc.new { |u| u.id.blank? }
   
   def full_name
     "#{first_name} #{last_name}"
