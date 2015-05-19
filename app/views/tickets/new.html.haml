@@ -1,5 +1,17 @@
 %h2 Add a ticket:
-= render 'form'
+
+- if @ticket.errors.any?
+  #error_explanation
+    %h2
+      = pluralize(@ticket.errors.count, "error")
+      prohibited
+      this ticket from being saved:
+    %ul
+      - @ticket.errors.full_messages.each do |msg|
+        %li= msg
+
+= form_for ([@project, @project.tickets.build]) do |f|
+  = render :partial => 'form', :locals => { :f => f }
 
 %br/
 = link_to 'Back', project_tickets_path(@project, @ticket)
