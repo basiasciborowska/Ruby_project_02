@@ -8,14 +8,16 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
+<div class="container"> 
   <div id="flash">
     <%=flash[:notice] if flash[:notice]%>
     <%=flash[:alert] if flash[:alert]%>
   </div>
-  
 <%= yield %>
+</div>
 <%= render 'layouts/footer' %>
 <script type="text/javascript" id="cookiebanner"
     src="http://cookiebanner.eu/js/cookiebanner.min.js"></script>
 </body>
 </html>
+

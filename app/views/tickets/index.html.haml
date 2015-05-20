@@ -14,7 +14,7 @@
   - @project.tickets.each do |ticket|
     %tr
       %td
-        %p{:style => "margin:10px"}= link_to ticket.title,  [ticket.project, ticket]
+        %p{:style => "margin:10px; margin-left:0px"}= link_to ticket.title,  [ticket.project, ticket]
       %td
         %p{:style => "margin:10px"}= link_to 'Edit', edit_project_ticket_path(@project, ticket)
       %td

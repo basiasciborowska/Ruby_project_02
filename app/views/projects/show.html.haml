@@ -1,8 +1,9 @@
 %p
-  %strong Title:
-  = @project.title
+  %h1= @project.title
 %p
-  %strong Description:
+  %h5= @project.created_at.strftime("%e %B %Y, %k:%M")
+  %br/
+%p
   = @project.description
 
 %br/

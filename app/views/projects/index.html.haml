@@ -8,7 +8,7 @@
   - projects.each do |project|
     %tr
       %td
-        %p{:style => "margin:10px"}= link_to project.title, project
+        %p{:style => "margin:10px; margin-left:0px"}= link_to project.title, project
       %td
         - if can? :update, @project
           %p{:style => "margin:10px"}= link_to " Edit ", edit_project_path(project)
