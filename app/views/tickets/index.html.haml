@@ -1,31 +1,33 @@
-%h1 Tickets
-%br/
+.container
+  .row
+    .col-lg-9
+      %h1 Tickets
+      %br/
+      %table
+        %tr
+          %th
+          %th{:colspan => "3"}
+        - tickets = @project.tickets.all
+        - @project.tickets.each do |ticket|
+          %tr
+            %td
+              %p{:style => "margin:10px; margin-left:0px"}= link_to ticket.title,  [ticket.project, ticket]
+            %td
+              %p{:style => "margin:10px"}= link_to 'Edit', edit_project_ticket_path(@project, ticket)
+            %td
+              %p{:style => "margin:10px"}= link_to ' Destroy ', [ticket.project, ticket], |
+                method: :delete,                           |
+                data: { confirm: 'Are you sure?' }         |
+        - if tickets.size == 0
+          %em No Ticket Found
+          %br/
+          %br/
 
-%h5= link_to 'Add a ticket', new_project_ticket_path |
-%h5= link_to 'Back', project_path(@project)
-
-%br/
-%br/
-
-%table
-  %tr
-    %th
-    %th{:colspan => "3"}
-  - tickets = @project.tickets.all
-  - @project.tickets.each do |ticket|
-    %tr
-      %td
-        %p{:style => "margin:10px; margin-left:0px"}= link_to ticket.title,  [ticket.project, ticket]
-      %td
-        %p{:style => "margin:10px"}= link_to 'Edit', edit_project_ticket_path(@project, ticket)
-      %td
-        %p{:style => "margin:10px"}= link_to ' Destroy ', [ticket.project, ticket], |
-          method: :delete,                           |
-          data: { confirm: 'Are you sure?' }         |
-  - if tickets.size == 0
-    %em No Ticket Found
-    %br/
-    %br/
-    
-%br/
-%br/
+      %br/
+      %br/
+    .col-lg-3
+      .well.sidebar-nav
+        %h1 Menu
+        %ul.nav.nav-list
+          %li= link_to 'Back', project_path(@project)
+          %li= link_to 'Add a ticket', new_project_ticket_path

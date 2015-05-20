@@ -1,19 +1,30 @@
-%p
-  %h1= @ticket.title
-%p
-  %h5= @ticket.created_at.strftime("%e %B %Y, %k:%M")
-  %br/
-  %h5= link_to 'Back', project_tickets_path(@project, @ticket)
-  %br/
-%p
-  %strong Description:
-  = @ticket.description
-%p
-  %strong Priority:
-  = @ticket.priority
-%p
-  %strong Difficulty:
-  = @ticket.difficulty
-%p
-  %strong Status:
-  = @ticket.status
+.container
+  .row
+    .col-lg-9
+      %p
+        %h1= @ticket.title
+      %p
+        %h5= @ticket.created_at.strftime("%e %B %Y, %k:%M")
+        %br/
+      %p
+        %strong Description:
+        = @ticket.description
+      %p
+        %strong Priority:
+        = @ticket.priority
+      %p
+        %strong Difficulty:
+        = @ticket.difficulty
+      %p
+        %strong Status:
+        = @ticket.status
+    .col-lg-3
+      .well.sidebar-nav
+        %h1 Menu
+        %ul.nav.nav-list
+          %li= link_to 'Back', project_tickets_path(@project, @ticket)
+          %li= link_to 'Edit', edit_project_ticket_path(@project, @ticket)
+          %li= link_to ' Destroy ', [@ticket.project, @ticket], |
+          method: :delete,                           |
+          data: { confirm: 'Are you sure?' }         |
+

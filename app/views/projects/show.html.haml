@@ -1,10 +1,23 @@
-%p
-  %h1= @project.title
-%p
-  %h5= @project.created_at.strftime("%e %B %Y, %k:%M")
-  %br/
-  %h5= link_to 'Tickets', project_tickets_path(@project, @ticket)
-  %h5= link_to 'Back', projects_path
-  %br/
-%p
-  = @project.description
+.container
+  .row
+    .col-lg-9
+      %p
+        %h1= @project.title
+      %p
+        %h5= @project.created_at.strftime("%e %B %Y, %k:%M")
+        %br/
+        %h5= link_to 'Tickets', project_tickets_path(@project, @ticket)
+        %h5= link_to 'Back', projects_path
+        %br/
+      %p
+        = @project.description
+    .col-lg-3
+      .well.sidebar-nav
+        %h1 Menu
+        %ul.nav.nav-list
+          %li= link_to 'Tickets', project_tickets_path(@project, @ticket)
+          %li= link_to 'Back', projects_path
+          %li= link_to " Edit ", edit_project_path(@project)
+          %li= link_to ' Destroy ', project_path(@project), |
+          method: :delete,                           |
+          data: { confirm: 'Are you sure?' }         |
