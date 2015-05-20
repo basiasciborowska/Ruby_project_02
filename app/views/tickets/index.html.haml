@@ -1,8 +1,6 @@
 .container
   .row
     .col-lg-9
-      %h1 Tickets
-      %br/
       %table
         %tr
           %th
@@ -11,13 +9,9 @@
         - @project.tickets.each do |ticket|
           %tr
             %td
-              %p{:style => "margin:10px; margin-left:0px"}= link_to ticket.title,  [ticket.project, ticket]
-            %td
-              %p{:style => "margin:10px"}= link_to 'Edit', edit_project_ticket_path(@project, ticket)
-            %td
-              %p{:style => "margin:10px"}= link_to ' Destroy ', [ticket.project, ticket], |
-                method: :delete,                           |
-                data: { confirm: 'Are you sure?' }         |
+              %p{:style => "margin:10px; margin-left:0px"}
+              %h3= link_to ticket.title,  [ticket.project, ticket]
+              %h5= ticket.created_at.strftime("%e %B %Y, %k:%M")
         - if tickets.size == 0
           %em No Ticket Found
           %br/
@@ -26,8 +20,7 @@
       %br/
       %br/
     .col-lg-3
-      .well.sidebar-nav
-        %h1 Menu
-        %ul.nav.nav-list
+      .bs-sidebar.affix
+        %ul.nav.bs-sidenav
           %li= link_to 'Back', project_path(@project)
           %li= link_to 'Add a ticket', new_project_ticket_path

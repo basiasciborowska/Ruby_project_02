@@ -19,9 +19,8 @@
         %strong Status:
         = @ticket.status
     .col-lg-3
-      .well.sidebar-nav
-        %h1 Menu
-        %ul.nav.nav-list
+      .bs-sidebar.affix
+        %ul.nav.bs-sidenav
           %li= link_to 'Back', project_tickets_path(@project, @ticket)
           %li= link_to 'Edit', edit_project_ticket_path(@project, @ticket)
           %li= link_to ' Destroy ', [@ticket.project, @ticket], |
