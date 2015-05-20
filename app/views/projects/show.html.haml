@@ -3,10 +3,8 @@
 %p
   %h5= @project.created_at.strftime("%e %B %Y, %k:%M")
   %br/
+  %h5= link_to 'Tickets', project_tickets_path(@project, @ticket)
+  %h5= link_to 'Back', projects_path
+  %br/
 %p
   = @project.description
-
-%br/
-= link_to 'Tickets', project_tickets_path(@project, @ticket)
-%br/
-= link_to 'Back', projects_path

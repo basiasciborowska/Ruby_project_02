@@ -1,6 +1,10 @@
 %p
-  %strong Title:
-  = @ticket.title
+  %h1= @ticket.title
+%p
+  %h5= @ticket.created_at.strftime("%e %B %Y, %k:%M")
+  %br/
+  %h5= link_to 'Back', project_tickets_path(@project, @ticket)
+  %br/
 %p
   %strong Description:
   = @ticket.description
@@ -13,6 +17,3 @@
 %p
   %strong Status:
   = @ticket.status
-  
-%br/
-= link_to 'Back', project_tickets_path(@project, @ticket)
