@@ -9,9 +9,22 @@
       %ul.nav.navbar-nav
         %li= link_to 'Projects', projects_path
         %li= link_to 'New project', new_project_path
-        - if user_signed_in?
-          %li= link_to "Sign out", destroy_user_session_path, method: :delete
-          %li= link_to "Edit user", edit_user_registration_path
-        - else
-          %li= link_to "Sign in", new_user_session_path
+          
+      %ul.nav.navbar-nav.navbar-right
+        .btn-group
+          %button.btn.btn-link.btn-lg.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :type => "button"}
+            - if user_signed_in?
+              = current_user.full_name
+            - else
+              You R not sign in
+            %span.caret
+          %ul.dropdown-menu{:role => "menu"}
+            %li
+              - if user_signed_in?
+                = link_to "Edit User", edit_user_registration_path
+            %li
+              - if user_signed_in?
+                = link_to "Sign out", destroy_user_session_path, method: :delete
+              - else
+                = link_to "Sign in", new_user_session_path 
 
