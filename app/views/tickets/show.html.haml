@@ -7,7 +7,8 @@
         %h5= @ticket.created_at.strftime("%e %B %Y, %k:%M")
         %br/
       %p
-        %strong Picture:
+        %strong Attachment:
+        = @ticket.attachment_name
         %br
         = image_tag @ticket.picture.url(:medium)
         %br
