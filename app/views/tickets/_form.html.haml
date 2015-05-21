@@ -19,6 +19,12 @@
   %br/
   = f.text_field :status
 %p
-  = f.file_field :picture
+  - if @ticket.picture.present?
+    = image_tag @ticket.picture.url(:medium)
+    %br/      
+    = f.check_box :remove_picture
+    Remove the picture
+  - else
+    = f.file_field :picture
 %p
   = f.submit
