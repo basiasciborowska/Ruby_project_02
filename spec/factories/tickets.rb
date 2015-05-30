@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :ticket do
-    sequence(:title) { |n| "Ticket no.#{n}"}
-    sequence(:description) { |n| "Some ql words #{n}"}
-    sequence(:priority) { |n| "priority no.#{n}"}
-    sequence(:difficulty) { |n| "difficulty at level #{n}"}
-    sequence(:status) { |n| "status: #{n}"}
+    sequence(:title) { |n| "Ticket"}
+    sequence(:description) { |n| "Some ql words"}
+    sequence(:priority) { |n| "priority"}
+    sequence(:difficulty) { |n| "difficulty"}
+    sequence(:status) { |n| "status"}
   end
 end
