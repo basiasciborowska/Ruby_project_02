@@ -1,9 +1,10 @@
 require 'rails_helper'
 
-describe ProjectsController do
-    before :each do
-      @project = create(:project)
-    end
+
+describe ProjectsController do 
+  before :each do
+    @project = create(:project)
+  end
   
   describe 'index' do
     it 'return projects' do
