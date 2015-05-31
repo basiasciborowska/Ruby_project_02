@@ -2,5 +2,5 @@
   .container4
     %h1.cover-heading Hello Rails!
     %p.lead
-      %a.btn.btn-success.btn-lg{:href => '#'}
-        Projects
+      %button.btn.btn-success.btn-lg{:type => "button"}
+        = link_to 'Projects', controller: 'projects'

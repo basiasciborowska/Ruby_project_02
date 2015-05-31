@@ -1,26 +1,23 @@
 .container
-  .row
-    .col-lg-9
-      %table
-        %tr
-          %th
-          %th{:colspan => "3"}
-        - tickets = @project.tickets.all
-        - @project.tickets.each do |ticket|
-          %tr
-            %td
-              %p{:style => "margin:10px; margin-left:0px"}
-              %h3= link_to ticket.title,  [ticket.project, ticket]
-              %h5= ticket.created_at.strftime("%e %B %Y, %k:%M")
-        - if tickets.size == 0
-          %em No Ticket Found
-          %br/
-          %br/
+  %nav
+    %ul.pagination
+      %li= link_to '«', project_path(@project)
+      %li= link_to 'Add', new_project_ticket_path
+  %table
+    %tr
+      %th
+      %th{:colspan => "3"}
+    - tickets = @project.tickets.all
+    - @project.tickets.each do |ticket|
+      %tr
+        %td
+          %p{:style => "margin:10px; margin-left:0px"}
+          %h3= link_to ticket.title,  [ticket.project, ticket]
+          %h5= ticket.created_at.strftime("%e %B %Y, %k:%M")
+    - if tickets.size == 0
+      %em No Ticket Found
+      %br/
+      %br/
 
-      %br/
-      %br/
-    .col-lg-3
-      .bs-sidebar.affix
-        %ul.nav.bs-sidenav
-          %li= link_to 'Back', project_path(@project)
-          %li= link_to 'Add a ticket', new_project_ticket_path
+  %br/
+  %br/

@@ -1,19 +1,18 @@
 .container
-  .row
-    .col-lg-9
-      %p
-        %h1= @project.title
-      %p
-        %h5= @project.created_at.strftime("%e %B %Y, %k:%M")
-        %br/
-      %p
-        = @project.description
-    .col-lg-3
-      .bs-sidebar.affix
-        %ul.nav.bs-sidenav
-          %li= link_to 'Tickets', project_tickets_path(@project, @ticket)
-          %li= link_to 'Edit', edit_project_path(@project)
-          %li= link_to 'Delete', project_path(@project), |
-          method: :delete,                           |
-          data: { confirm: 'Are you sure?' }         |
-          %li= link_to 'Back', projects_path
+  %nav
+    %ul.pagination
+      %li= link_to '«', projects_path    
+      %li= link_to 'Edit', edit_project_path(@project)
+      %li= link_to 'Delete', project_path(@project), |
+      method: :delete,                           |
+      data: { confirm: 'Are you sure?' }         |
+      %li= link_to 'Tickets', project_tickets_path(@project, @ticket)
+  %p
+    %h1= @project.title
+  %p
+    %h5= @project.created_at.strftime("%e %B %Y, %k:%M")
+    %br/
+  %p
+    = @project.description
+    
+      
