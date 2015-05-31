@@ -1,6 +1,10 @@
-%h1 Editing ticket
+.container
+  %nav
+    %ul.pagination
+      %li= link_to '«', project_tickets_path(@project, @ticket)
+  %h1 Edit
 
-= form_for ([@project, @ticket]), :html => { :class => 'super', :multipart => true } do |f|
-  = render :partial => 'form', :locals => { :f => f }
-
-= link_to 'Back', project_tickets_path(@project, @ticket)
+  = form_for ([@project, @ticket]), :html => { :class => 'super', :multipart => true } do |f|
+    = render :partial => 'form', :locals => { :f => f }
+  %br/
+  %br/
