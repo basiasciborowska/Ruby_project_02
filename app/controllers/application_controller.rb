@@ -4,6 +4,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   before_filter :update_sanitized_params, if: :devise_controller?
+  
+  private
+  def update
+    if this
+      redirect_to root_path
+    else
+      super
+    end
+  end
 
   def update_sanitized_params
     devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:email,:first_name, :last_name, :password, :password_confirmation)}
