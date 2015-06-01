@@ -1,7 +1,32 @@
 div.container4 { 
-  text-align: center 
+  background-color: transparent;
+  text-align: center
+}
+
+div.jumbotron {
+  background-color: #999; /* IE8 proofing */
+  background-color: rgba(255,255,255,.5);
 }
 
 a:link {
     color: #000000;
+}
+.btn-success,
+.btn-success:hover,
+.btn-success:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  background-color: #fff;
+  border: 1px solid #fff;
+}
+
+html,
+body {
+/*css for full size background image*/
+  background: url(http://imagizer.imageshack.us/v2/1024x768q90/537/l3aavx.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5); 
 }
