@@ -6,8 +6,12 @@ class Ability
     #
        user ||= User.new # guest user (not logged in)
        #if user.admin?
-         can :manage, :all
-         can :update, Project
+         can :create, Project
+         can :manage, Project, :owner_id => user.id 
+         can :create, Ticket
+    can :manage, Ticket, :project => {:owner_id => user.id}    
+           #else
+         can :read, :all
        #else
          #can :read, :all
          #cannot :update, Project

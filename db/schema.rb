@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601183751) do
+ActiveRecord::Schema.define(version: 20150601213505) do
 
   create_table "project_users", force: :cascade do |t|
     t.integer "member_project_id"
@@ -23,7 +23,16 @@ ActiveRecord::Schema.define(version: 20150601183751) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "owner_id"
   end
+
+  create_table "projects_users", id: false, force: :cascade do |t|
+    t.integer "member_project_id"
+    t.integer "member_id"
+  end
+
+  add_index "projects_users", ["member_id"], name: "index_projects_users_on_member_id"
+  add_index "projects_users", ["member_project_id"], name: "index_projects_users_on_member_project_id"
 
   create_table "tickets", force: :cascade do |t|
     t.string   "title"
@@ -39,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150601183751) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.string   "attachment_name"
+    t.integer  "created_by_user"
   end
 
   add_index "tickets", ["project_id"], name: "index_tickets_on_project_id"

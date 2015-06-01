@@ -2,10 +2,11 @@
   %nav
     %ul.pagination
       %li= link_to '«', project_tickets_path(@project, @ticket)
-      %li= link_to 'Edit', edit_project_ticket_path(@project, @ticket)
-      %li= link_to 'Delete', [@ticket.project, @ticket], |
-      method: :delete,                           |
-      data: { confirm: 'Are you sure?' }         |
+      - if can? :ud, @ticket
+        %li= link_to 'Edit', edit_project_ticket_path(@project, @ticket)
+        %li= link_to 'Delete', [@ticket.project, @ticket], |
+        method: :delete,                           |
+        data: { confirm: 'Are you sure?' }         |
   %p
     %h1= @ticket.title
   %p

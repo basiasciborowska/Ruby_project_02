@@ -1,11 +1,12 @@
 .container
   %nav
     %ul.pagination
-      %li= link_to '«', projects_path    
-      %li= link_to 'Edit', edit_project_path(@project)
-      %li= link_to 'Delete', project_path(@project), |
-      method: :delete,                           |
-      data: { confirm: 'Are you sure?' }         |
+      %li= link_to '«', projects_path
+      - if can? :manage, @project
+        %li= link_to 'Edit', edit_project_path(@project)
+        %li= link_to 'Delete', project_path(@project), |
+        method: :delete,                           |
+        data: { confirm: 'Are you sure?' }         |
       %li= link_to 'Tickets', project_tickets_path(@project, @ticket)
   %p
     %h1= @project.title
