@@ -14,9 +14,10 @@
     %br/
   %p
     = @ticket.attachment_name
-    %br
-    = image_tag @ticket.picture.url(:medium)
-    %br
+    -if @ticket.picture.present?
+      %br/
+      = image_tag @ticket.picture.url(:medium)
+      %br
   %p
     = @ticket.description
   %p
