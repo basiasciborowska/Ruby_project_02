@@ -7,6 +7,7 @@
         %li= link_to 'Delete', project_path(@project), |
         method: :delete,                           |
         data: { confirm: 'Are you sure?' }         |
+        %li= link_to 'Add co-worker', new_user_invitation_path(), metod: :get
       %li= link_to 'Tickets', project_tickets_path(@project, @ticket)
   %p
     %h1= @project.title
